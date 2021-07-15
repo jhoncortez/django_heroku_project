@@ -1,0 +1,44 @@
+.form {
+    @include flex;
+    @include flexColumnStart;
+    margin: 0 auto;
+    @include mq(375px) {
+        width: 500px;
+    }
+    h1 {
+        @include colorAndSize($VerySoftGrayCyan,$HeadingSecondaryFontSize);
+    }
+    p {
+        @include flex;
+        @include flexColumnStart;
+        padding: 7px;
+        label {
+            font-size: 18px;
+        }
+        input {
+            padding:10px;
+            color: $DarkGrayishCyan;
+            background: $VerySoftGrayCyan;
+            &:focus {
+                color: $VeryDarkGrayishCyan;
+            }
+        }
+    }
+    button,
+    input[type=reset],
+    input[type=button],
+    input[type=submit] {
+        @include important-buttons-properties;
+        width: 250px;
+        margin: 0 auto;
+        padding-left:15px;
+        padding-right:15px;
+        border-radius: 20px;
+        
+    }
+    .form-error-message {
+        text-align:center;
+        @extend %alignself-center;
+        color: red;
+    }
+}

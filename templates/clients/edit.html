@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+
+{% include "../_hero.html" %}
+<div class="section edit-client-section"> 
+    <div class="container">
+        <form action="{% url 'clients:edit' slug=client_id_fiscal  %}" method="post" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+            {% if error %}
+                {{message_error}}
+            {% endif %}
+        </form>
+    </div>
+</div>
+    
+{% endblock %}

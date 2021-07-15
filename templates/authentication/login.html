@@ -1,0 +1,27 @@
+{% extends "layout-auth.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+<div class="section auth-login-section"> 
+    <div class="container">
+    
+        <form class="form" action="{% url 'authentication:auth' %}" method="get">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+            {% if error %}
+                <span class="form-error-message">
+                    {{message_error}}
+                </span>
+            {% endif %}
+            <ul class="auth-menu">
+                <li class="menu-item"><a href="{% url 'clients:create' %}" class="menu-link">Sign up</a></li>
+            </ul>
+        </form>
+    </div>
+</div>
+    
+{% endblock %}

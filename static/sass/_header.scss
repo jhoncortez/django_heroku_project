@@ -1,0 +1,59 @@
+.nav-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    @include flex;
+    @include flexRowStart;
+    flex-flow: wrap;
+    position: absolute;
+    @include mq(375px){
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .brand-logo-wrapper {
+        padding:10px;
+        max-width:$maxWidthLogoMainMobile;
+        max-height: $maxHeightLogoMainMobile;
+        @include mq(375px){
+            padding:0px;
+            max-width:  $maxWidthLogoMain;
+            max-height: $maxHeightLogoMain;
+            margin-left:5%;
+        }
+        .logo {
+            width: 100%;
+        }
+    }
+    .button-wrapp {
+        @extend %alignself-center;
+        margin-left: 50px;
+        .create-invoice-btn {
+            @include important-buttons-properties(false, rgb(82, 136, 10), #fff);
+        }
+        @include mq(375px) { 
+            margin-left: 0px;
+        }
+    }
+    .nav-menu-wrapper {
+        @include flex;
+        @include flex-direction(column);
+        @extend %alignself-center;
+        @extend %flex-grow;
+        .nav-menu {
+            @include important-menu-properties;
+            li {
+                padding:10px;
+                a {
+                    
+                    text-transform: uppercase;
+                }
+            }
+        }
+        @include mq(375px) {
+            margin-right:5%;
+            flex-grow:initial;
+        }
+        
+    }
+    
+}

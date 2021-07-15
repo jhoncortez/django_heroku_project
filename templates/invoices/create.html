@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+{% include "../_hero.html" %}
+<div class="section create-client-section"> 
+    <div class="container">
+        
+        <form class="form" action="{% url 'invoices:create' slug=client_id_fiscal %}" method="post">
+            <p>ID Fiscal: {{ client.ID_fiscal }}</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+            {% if error %}
+                {{message_error}}
+            {% endif %}
+        </form>
+    </div>
+</div>  
+    
+{% endblock %}

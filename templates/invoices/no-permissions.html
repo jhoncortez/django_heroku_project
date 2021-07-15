@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+
+{% include "../_hero.html" %}
+<div class="section edit-client-section"> 
+    <div class="container">
+        <div class="info-client no-permissions">
+            <h1>You cant acces here</h1>
+            <p>the page you try to see is blocked for you</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

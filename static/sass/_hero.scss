@@ -1,0 +1,14 @@
+.hero {
+    @include important-hero-properties;
+    .container {
+        @include flex;
+        @include flexColumnEnd;
+        height: 100%;
+    }
+    .heading-principal {
+        margin-top: auto;
+    }
+    .heading-secondary {
+        color:#fff;
+    }
+}

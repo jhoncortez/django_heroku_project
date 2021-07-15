@@ -1,0 +1,322 @@
+/* import reset.scss */
+@import "reset";
+
+@mixin mq($size) {
+    @media only screen and (min-width: $size) {
+        @content;
+    }
+}
+
+/* define variables */
+$font: 'Spartan', sans-serif;
+$fontSize : 1em;
+$fontSizeMobile : 0.5em;
+$marginAuto: auto auto;
+$ColorWhite : #fff;
+$VerySoftGrayCyan : #DBDCDD;
+$DarkGrayishCyan : #A4AAAD;
+$VeryDarkGrayishCyan : #818386;
+$primaryColor : #005271;
+$secondaryColor : #B3272D;
+
+// elements properties
+// headings
+$HeadingPrincipalColor : $ColorWhite;
+$HeadingPrincipalFontSize: 7em;
+$HeadingPrincipalFontSizeMobile: 4.5em;
+$HeadingSecondaryColor : $DarkGrayishCyan;
+$HeadingSecondaryFontSize: 2.5em;
+$HeadingSecondaryFontSizeMobile: 1.5em;
+// body
+$bgBody : hsl(0, 0%, 100%);
+
+//lists
+$listItemsBg : #fff;
+
+// container
+$widthContainerDesktop : 1280px;
+$widthContainerMobile : 375px;
+
+// logo
+$maxWidthLogoMain : 200px;
+$maxHeightLogoMain : 200px;
+$maxWidthLogoMainMobile : 120px;
+$maxHeightLogoMainMobile : 120px;
+
+// buttons
+$buttonDefaultFontSize: 16px;
+$buttonDefaultFontWeight: 500;
+$buttonDefaultTextColor: #fff;
+
+//links 
+$linkDefaultTextColor: $secondaryColor;
+$linkDefaultTextDecoration: none;
+$linkDefaultHoverTextColor: $secondaryColor;
+$linkDefaultHoverTextDecoration: underline;
+
+// hero
+$defaultHeightHero : 60vh;
+$defaultHeightHeroMobile : 50vh;
+
+
+// new variables to import and use in style.scss and standard.scss
+$menuFontSize: 20px;
+
+@mixin flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+@mixin inline-flex {
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+@mixin flex-direction($direction) {
+    flex-direction: $direction;
+}
+@mixin flex-auto {
+    flex: 0 1 auto;
+}
+@mixin flexColumnStart {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+@mixin flexColumnEnd {
+    flex-direction: column;
+    justify-content: flex-end;
+}
+@mixin flexRowStart {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+@mixin flexRowEnd {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+@mixin flexCenter {
+    justify-content: center;
+}
+%flex {
+    @include  flex; 
+}
+%flex-colum{
+    flex-direction: column ;
+}
+%flex-row{
+    flex-direction: row ;
+}
+%flex1 {
+    flex: 1 1 0%;
+}
+%flex-auto {
+    @include  flex-auto; 
+}
+%justify-between {
+    justify-content: space-between;
+}
+%alignself-center {
+    align-self: center;
+}
+%alignself-start {
+    align-self: start;
+}
+%alignself-end {
+    align-self: end;
+}
+%flex-grow {
+    flex-grow: 1;
+}
+%bold {
+    font-weight: 700;
+}
+%hide {
+    display: none;
+}
+%shadow-bottom{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+@mixin bg-gradient($color1, $color2) {
+    background: linear-gradient(90deg, $color1 2%, $color2 2%);
+}
+@mixin border-rounded($size) {
+    border-radius: $size;
+}
+
+%align-center {
+    text-align:center;
+}
+
+// elements mixins
+@mixin important-buttons-properties($default: true, $bgColor : false, $textColor : false){
+    padding:10px 8px;
+    text-align: center;
+    font-size: $buttonDefaultFontSize;
+    font-weight: $buttonDefaultFontWeight;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    @if $default {
+        background-color: $primaryColor;
+        color: $buttonDefaultTextColor;
+    }@else {
+        @if $bgColor {
+            background-color: $bgColor;
+        }
+        @if $textColor {
+            color: $textColor;
+        }
+    }
+    &:hover,&:focus{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        
+    }
+
+}
+
+// function mixin important-body-properties
+@mixin important-body-properties {
+    font-family: $font;
+    font-size: $fontSize;
+}
+
+// function mixin colorAndSize
+@mixin colorAndSize($c, $sm, $s:false) {
+    color: $c;
+    font-size: $sm;
+    font-weight: 500;
+    @if $s {
+        @include mq(375px) {
+            font-size: $s;
+        }
+    }
+}
+
+@mixin important-lists-properties {
+    list-style: none;
+    padding:0px;
+    margin:0px;
+    li {
+        padding: 5px;
+    }
+}
+
+@mixin important-links-properties {
+    text-decoration: $linkDefaultTextDecoration;
+    color: $linkDefaultTextColor;
+    padding:0px;
+    &:hover{
+        text-decoration: $linkDefaultHoverTextDecoration;
+        color: $linkDefaultHoverTextColor;
+    }
+}
+
+@mixin important-menu-properties {
+    @include inline-flex;
+    @include important-lists-properties;
+    align-self: center;
+    @include mq(375px) {
+        align-self: end;
+    }
+    a {
+        color:#fff;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+@mixin important-hero-properties($bgImage: false) {
+    @if $bgImage {
+        background-image: $bgImage;
+        background-size: cover;
+    }@else {
+        background-color:$primaryColor;
+    }
+    height: $defaultHeightHeroMobile;
+    @include mq(375px) {
+        height:$defaultHeightHero;
+    }
+    
+}
+
+/* use variables and import important properties to body */
+body {
+    position:relative;
+    @extend %flex;
+    @extend %flex-colum;
+    @include important-body-properties;
+    /* include colorAndSize with parameters color and fontsize */
+    @include colorAndSize($VeryDarkGrayishCyan , $fontSize);
+    background-color: $bgBody;
+
+    span, p {
+        @extend .parragraph-basics;
+    }
+    h1 {
+        @include colorAndSize($HeadingPrincipalColor , $HeadingPrincipalFontSizeMobile, $HeadingPrincipalFontSize);
+    }
+}
+a {
+    @include important-links-properties;
+    
+}
+ul {
+    @include important-lists-properties;
+}
+.section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.container {
+    max-width: $widthContainerMobile;
+    margin: $marginAuto;
+    padding-right: 5px;
+    padding-left: 5px;
+    @extend %flex;
+    @extend %flex-colum;
+    @include mq(375px) 
+    {
+        padding-right: 16px;
+        padding-left: 16px;
+        max-width: $widthContainerDesktop;
+    }
+}
+
+/* classes for @extends and Inheritance proporse */
+.parragraph-basics{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.heading-basic {
+    @extend %bold;
+    line-height: 1.5;
+    color:$VeryDarkGrayishCyan;
+}
+.links-basic {
+    & , .text-link {
+        color: $primaryColor;
+    }
+    text-decoration: none;
+    cursor:pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+
+}
+.btn {
+    @include important-buttons-properties;
+}
+.heading {
+    margin-top: 0;
+    margin-bottom: 15px;
+    @include mq(375px) {
+        margin-bottom: 24px;
+    }
+}
+.hide-desktop {
+    @include mq(375px) {
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,63 @@
+.invoices-list-view-content {
+    .div-content {
+        width: 100%;
+        @extend %alignself-center;
+
+        .info-invoices-list {
+            @include flex;
+            @include flexColumnStart;
+            
+            .invoice-item {
+                padding:10px;
+                border-bottom: solid 1px $DarkGrayishCyan;
+                margin-bottom: 15px;
+                @include flex;
+                @include flexColumnStart;
+                @include mq (735px) {
+                    @include flexRowStart;
+                    padding:0px;
+                    border-bottom: none;
+                    margin-bottom: 0px;
+                }
+
+                .detail-invoice{
+                    @extend %flex1;
+
+                    .head-detail {
+                        @extend %bold;
+                        padding: 3px 0px;
+                        margin-bottom: 5px;
+                        @include mq (735px) {
+                            padding:10px;
+                        }
+                    }
+
+                    .content-detail {
+                        margin-bottom: 12px;
+                        @include mq (735px) {
+                            padding:20px 10px 0px;
+                        }
+                    }
+                }
+                &.first-item {
+                    @include mq(375px) {
+                        .head-detail {
+                            background-color: $primaryColor;
+                            color:#fff;
+                        }
+                    }  
+                    
+                }
+            }
+            
+        }
+        @include mq(375px) {
+            .row-bg-gray {
+                background-color: $VerySoftGrayCyan;
+            }
+            .row-bg-white {
+                background-color: #fff;
+            }
+        }
+    }
+}

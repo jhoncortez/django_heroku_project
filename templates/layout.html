@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>
+        {% block title %}
+        {% endblock %}
+
+    </title>
+</head>
+<body> 
+    <nav class="section nav-header">
+        <div class="brand-logo-wrapper">
+            <img src="{% static 'assets/caravela-logo-light.png' %}" class="logo">
+             
+        </div>
+        {% if client.activo %}
+        <div class="button-wrapp">
+            <a href="{% url 'invoices:create' slug=client_id_fiscal %}" class="btn link-button create-invoice-btn" title="Create Invoice">Create Invoice +</a>
+        </div>
+        {% endif %}
+        <div class="nav-menu-wrapper">
+            <ul class="nav-menu">
+                <li class="menu-item"><a href="{% url 'clients:profile' slug=client_id_fiscal %}" class="menu-link">Profile</a></li>
+                
+                <li class="menu-item"><a href="{% url 'invoices:list' slug=client_id_fiscal %}" class="menu-link">Invoices</a></li>
+
+                <li class="menu-item"><a href="{% url 'authentication:logout' %}" class="menu-link">Log out</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
+    <footer class="section">
+
+    </footer>
+</body>
+</html>

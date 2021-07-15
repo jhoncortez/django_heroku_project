@@ -1,0 +1,303 @@
+/*** standard - basics  ***/
+/* import reset.scss */
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0; }
+
+/* ----------------------------------------------------------------------------------------------------
+Super Form Reset
+A couple of things to watch out for:
+- IE8: If a text input doesn't have padding on all sides or none the text won't be centered.
+- The default border sizes on text inputs in all UAs seem to be slightly different. You're better off using custom borders.
+- You NEED to set the font-size and family on all form elements
+- Search inputs need to have their appearance reset and the box-sizing set to content-box to match other UAs
+- You can style the upload button in webkit using ::-webkit-file-upload-button
+- ::-webkit-file-upload-button selectors can't be used in the same selector as normal ones. FF and IE freak out.
+- IE: You don't need to fake inline-block with labels and form controls in IE. They function as inline-block.
+- By turning off ::-webkit-search-decoration, it removes the extra whitespace on the left on search inputs
+----------------------------------------------------------------------------------------------------*/
+input,
+label,
+select,
+button,
+textarea {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1.5;
+  /* Browsers have different default form fonts */
+  font-size: 20px; }
+
+/* Remove the stupid outer glow in Webkit */
+input:focus {
+  outline: 0; }
+
+/* Box Sizing Reset
+-----------------------------------------------*/
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box; }
+
+/* These elements are usually rendered a certain way by the browser */
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* Text Inputs
+-----------------------------------------------*/
+/* Button Controls
+-----------------------------------------------*/
+input[type=checkbox],
+input[type=radio] {
+  width: 13px;
+  height: 13px; }
+
+/* File Uploads
+-----------------------------------------------*/
+/* Search Input
+-----------------------------------------------*/
+/* Make webkit render the search input like a normal text field */
+input[type=search] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box; }
+
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration {
+  display: none; }
+
+/* Buttons
+-----------------------------------------------*/
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {
+  /* Fix IE7 display bug */
+  overflow: visible;
+  width: auto; }
+
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button {
+  padding: 0;
+  border: 0;
+  background: none; }
+
+/* Textarea
+-----------------------------------------------*/
+textarea {
+  /* Move the label to the top */
+  vertical-align: top;
+  /* Turn off scroll bars in IE unless needed */
+  overflow: auto; }
+
+/* Selects
+-----------------------------------------------*/
+select[multiple] {
+  /* Move the label to the top */
+  vertical-align: top; }
+
+/* define variables */
+body, .container {
+  display: flex;
+  flex-wrap: wrap; }
+
+body, .container {
+  flex-direction: column; }
+
+.nav-header, .form .form-error-message {
+  align-self: center; }
+
+.heading-basic {
+  font-weight: 700; }
+
+/* use variables and import important properties to body */
+body {
+  position: relative;
+  font-family: "Spartan", sans-serif;
+  font-size: 1em;
+  /* include colorAndSize with parameters color and fontsize */
+  color: #818386;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: white; }
+  body h1 {
+    color: #fff;
+    font-size: 4.5em;
+    font-weight: 500; }
+    @media only screen and (min-width: 375px) {
+      body h1 {
+        font-size: 7em; } }
+
+a {
+  text-decoration: none;
+  color: #B3272D;
+  padding: 0px; }
+  a:hover {
+    text-decoration: underline;
+    color: #B3272D; }
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px; }
+  ul li {
+    padding: 5px; }
+
+.section {
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+.container {
+  max-width: 375px;
+  margin: auto auto;
+  padding-right: 5px;
+  padding-left: 5px; }
+  @media only screen and (min-width: 375px) {
+    .container {
+      padding-right: 16px;
+      padding-left: 16px;
+      max-width: 1280px; } }
+
+/* classes for @extends and Inheritance proporse */
+.parragraph-basics, body span, body p {
+  margin-bottom: 10px;
+  margin-top: 10px; }
+
+.heading-basic {
+  line-height: 1.5;
+  color: #818386; }
+
+.links-basic {
+  text-decoration: none;
+  cursor: pointer; }
+  .links-basic, .links-basic .text-link {
+    color: #005271; }
+  .links-basic:hover {
+    text-decoration: underline; }
+
+.btn {
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #005271;
+  color: #fff; }
+  .btn:hover, .btn:focus {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; }
+
+.heading {
+  margin-top: 0;
+  margin-bottom: 15px; }
+  @media only screen and (min-width: 375px) {
+    .heading {
+      margin-bottom: 24px; } }
+
+@media only screen and (min-width: 375px) {
+  .hide-desktop {
+    visibility: hidden; } }
+
+/*** standard - header  ***/
+.nav-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-flow: wrap; }
+  @media only screen and (min-width: 375px) {
+    .nav-header {
+      justify-content: space-between; } }
+  .nav-header .brand-logo-wrapper {
+    padding: 10px;
+    max-width: 200px;
+    max-height: 200px; }
+    .nav-header .brand-logo-wrapper .logo {
+      width: 100%; }
+
+/*** standard - form  ***/
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 auto; }
+  @media only screen and (min-width: 375px) {
+    .form {
+      width: 500px; } }
+  .form h1 {
+    color: #DBDCDD;
+    font-size: 2.5em;
+    font-weight: 500; }
+  .form p {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 7px; }
+    .form p label {
+      font-size: 18px; }
+    .form p input {
+      padding: 10px;
+      color: #A4AAAD;
+      background: #DBDCDD; }
+      .form p input:focus {
+        color: #818386; }
+  .form button,
+  .form input[type=reset],
+  .form input[type=button],
+  .form input[type=submit] {
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #005271;
+    color: #fff;
+    width: 250px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px; }
+    .form button:hover, .form button:focus,
+    .form input[type=reset]:hover,
+    .form input[type=reset]:focus,
+    .form input[type=button]:hover,
+    .form input[type=button]:focus,
+    .form input[type=submit]:hover,
+    .form input[type=submit]:focus {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; }
+  .form .form-error-message {
+    text-align: center;
+    color: red; }
+
+/*** standard - login  ***/
+.auth-menu {
+  margin-top: 10px; }
+  .auth-menu li {
+    text-align: center; }
+
+/*** standard - hero  ***/
+
+/*# sourceMappingURL=styles-auth.css.map */

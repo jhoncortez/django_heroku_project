@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{title}}: {{ client.nombres }} {{ client.apellidos }}
+{% endblock %}
+
+{% block body %}
+
+{% include "../_hero.html" %}
+
+{% if client.activo %}
+
+<div class="section invoices-list-view-content"> 
+    <div class="container">
+        <div class="div-content info-invoices">
+            <ul class="info-invoices-list">
+                {% for invoice in client.factura_set.all %}
+                    {% if forloop.counter != 1 %} {% cycle 'hide-desktop' as hidedesktop silent %} {% endif %}
+                    <li class="invoice-item {% if forloop.counter == 1 %} first-item {% endif %} {% cycle 'row-bg-gray' 'row-bg-white' %}">
+                        <div class="detail-invoice">
+                            <div class="head-detail {{hidedesktop}}">ID Factura</div>
+                            <div class="content-detail">{{ invoice.id }}</div>
+                        </div>
+                        <div class="detail-invoice">
+                            <div class="head-detail {{hidedesktop}}">ID Fiscal</div>
+                            <div class="content-detail">{{ invoice.ID_fiscal }}</div>
+                        </div>
+                        <div class="detail-invoice">
+                            <div class="head-detail {{hidedesktop}}">Valor</div>
+                            <div class="content-detail">{{ invoice.valor_factura }}</div>
+                        </div>
+                        <div class="detail-invoice">
+                            <div class="detail-invoice">
+                                <div class="head-detail {{hidedesktop}}">Moneda</div>
+                                <div class="content-detail">{{ invoice.moneda }}</div>
+                            </div>
+                        </div>
+                        <div class="detail-invoice">
+                            <div class="detail-invoice">
+                                <div class="head-detail {{hidedesktop}}">País Factura</div>
+                                <div class="content-detail">{{ invoice.pais_factura }}</div>
+                            </div>
+                        </div>
+                        <div class="detail-invoice">
+                            <div class="detail-invoice">
+                                <div class="head-detail {{hidedesktop}}">Fecha</div>
+                                <div class="content-detail">{{ invoice.fecha_factura }}</div>
+                            </div>
+                        </div>
+                        <div class="detail-invoice">
+                            <div class="detail-invoice">
+                                <div class="head-detail {{hidedesktop}}">Estado Factura</div>
+                                <div class="content-detail">
+                                    <div class="button-wrapp">
+                                        {% if invoice.estado_factura == 1 %}
+                                            <a href="#" class="btn link-button invoice-status-btn" title="Create Invoice">Pendiente</a>
+                                        {% else %}
+                                            <a href="#" class="btn link-button invoice-status-btn" title="Create Invoice">Aprovado</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div> 
+    
+</div>
+
+{% else %}
+<div class="section hero-section">
+    <div class="container">
+        <div class="info-client no-actived">
+            <h2>Account activation in process</h2>
+            <p>Your account is waiting for activation, please contact the admin</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+    
+{% endblock %}

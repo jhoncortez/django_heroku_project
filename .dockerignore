@@ -1,0 +1,9 @@
+__pycache__
+*.pyc
+env/
+db.sqlite3
+checkDatabase
+executeShell
+watchSass
+.sass-cache
+**/sass

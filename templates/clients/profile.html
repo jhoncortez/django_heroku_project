@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{title}} {{ client.nombres }} {{ client.apellidos }}
+{% endblock %}
+
+{% block body %}
+
+{% include "../_hero.html" %}
+
+{% if client.activo %}
+
+<div class="section info-client-section"> 
+    <div class="container">
+        <div class="div-content form-content">
+            <h4>ID FISCAL: {{ client.ID_fiscal }}</h4>
+            <div class="info-client">
+                <h3>Info Cliente:</h3>
+                <ul class="info-client-list">
+                    <li class="item-client-item">Pais: {{ client.pais }}</li>
+                    <li class="item-client-item">Empresa: {{ client.empresa }}</li>
+                    <li class="item-client-item">E-mail: {{ client.correo }}</li>
+                    <li class="item-client-item">Telefono: {{ client.telefono }}</li>
+                    <li class="item-client-item">Dirección: {{ client.direccion }}</li>
+                    <li class="item-client-item">Fecha creado: {{ client.fecha_creacion }}</li>
+                    <li class="item-client-item">Estado: {{ client.activo }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="section info-client-contact-section"> 
+    <div class="container">
+        <div class="info-contacto">
+            <h3>Info Contacto:</h3>
+            <ul class="info-client-list">
+                <li class="item-client-item">Contacto: {{ client.contacto }}</li>
+                <li class="item-client-item">Tel. Contacto: {{ client.telefono_contacto }}</li>
+                <li class="item-client-item">E-mail Contacto: {{ client.mail_contacto }}</li>
+            </ul>
+        </div>
+        <div class="actions">
+            <ul class="actions-menu">
+                <li class="action-item"><a href="{% url 'clients:edit' slug=client_id_fiscal %}" class="menu-link">Edit</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+
+{% else %}
+<div class="section info-client-contact-section"> 
+    <div class="container">
+        <div class="info-client no-actived">
+            <h2>Account activation in process</h2>
+            <p>Your account is waiting for activation, please contact the admin</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+    
+{% endblock %}

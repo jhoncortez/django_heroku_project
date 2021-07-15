@@ -1,0 +1,21 @@
+.nav-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    @include flex;
+    @include flexRowStart;
+    flex-flow: wrap;
+    @extend %alignself-center;
+    @include mq(375px){
+        justify-content: space-between;
+    }
+
+    .brand-logo-wrapper {
+        padding:10px;
+        max-width:$maxWidthLogoMain;
+        max-height: $maxHeightLogoMain;
+        .logo {
+            width: 100%;
+        }
+    }
+    
+}
